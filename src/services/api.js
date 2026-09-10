@@ -178,6 +178,20 @@ export async function listarUsuarios(token) {
 // ║                                                                     ║
 // ╚═════════════════════════════════════════════════════════════════════╝
 //
+
+//  RECEITA:
+//    1. fetch para `${API_URL}/api/usuarios/editar`
+//    2. method: "PUT"
+//    3. os dois headers acima
+//    4. body: JSON.stringify({ nome, email })
+//    5. .json(), checar resposta.ok, throw se der ruim
+//    6. return dados
+//
+//  ✅ Deu certo quando: você troca seu nome, clica em salvar, e o seu card
+//     no mural muda sozinho.
+//  🤔 Pergunta pra pensar: por que o card do mural mudou, se você só mexeu
+//     no formulário? (Resposta: o componente pai recarregou a lista.)
+//
 export async function editarPerfil(token, nome, email) {
   const resposta = await fetch(`${API_URL}api/usuarios/editar`, {
     method: "PUT",
@@ -194,23 +208,6 @@ export async function editarPerfil(token, nome, email) {
     throw new Error(dados.mensagem || "Não foi possível salvar.");
   }
   return dados;
-}
-//  RECEITA:
-//    1. fetch para `${API_URL}/api/usuarios/editar`
-//    2. method: "PUT"
-//    3. os dois headers acima
-//    4. body: JSON.stringify({ nome, email })
-//    5. .json(), checar resposta.ok, throw se der ruim
-//    6. return dados
-//
-//  ✅ Deu certo quando: você troca seu nome, clica em salvar, e o seu card
-//     no mural muda sozinho.
-//  🤔 Pergunta pra pensar: por que o card do mural mudou, se você só mexeu
-//     no formulário? (Resposta: o componente pai recarregou a lista.)
-//
-export async function editarPerfil(token, nome, email) {
-  // ↓↓↓ APAGUE ESTA LINHA E ESCREVA SEU CÓDIGO ↓↓↓
-  throw new Error("🚧 TAREFA 3 ainda não foi implementada (src/services/api.js)");
 }
 
 // ╔═════════════════════════════════════════════════════════════════════╗
