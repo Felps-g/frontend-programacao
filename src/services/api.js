@@ -238,7 +238,7 @@ export async function editarPerfil(token, nome, email) {
 //     social, quase sempre é isso que acontece.
 //
 export async function desativarConta(token) {
-  const resposta = await fetch(`${API_URL}/api/usuarios/desativar`, {
+  const resposta = await fetch(`${API_URL}api/usuarios/desativar`, {
     method: "DELETE",
     headers: { Authorization: `Bearer ${token}` },
     });
