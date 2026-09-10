@@ -185,7 +185,9 @@ export async function editarPerfil(token, nome, email) {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
+    
     body: JSON.stringify({ nome, email }),
+    
     });
   const dados = await resposta.json();
   if (!resposta.ok) {
