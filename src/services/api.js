@@ -178,15 +178,21 @@ export async function listarUsuarios(token) {
 // ║                                                                     ║
 // ╚═════════════════════════════════════════════════════════════════════╝
 //
-//  Esta é a tarefa que JUNTA as duas anteriores:
-//  tem body (como a Tarefa 1) E tem token (como a Tarefa 2).
-//  Ou seja: DOIS headers dentro do mesmo objeto.
-//
-//        headers: {
-//          "Content-Type": "application/json",
-//          Authorization: `Bearer ${token}`,
-//        }
-//
+export async function editarPerfil(token, nome, email) {
+  const resposta = await fetch(`${API_URL}api/usuarios/editar`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ nome, email }),
+    });
+  const dados = await resposta.json();
+  if (!resposta.ok) {
+    throw new Error(dados.mensagem || "Não foi possível salvar.");
+  }
+  return dados;
+}
 //  RECEITA:
 //    1. fetch para `${API_URL}/api/usuarios/editar`
 //    2. method: "PUT"
